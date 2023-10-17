@@ -11,11 +11,11 @@ int _printf(const char *format, ...)
 {
 	va_list forms;
 	int count = 0;
+	char c, *str;
 
-	if (format == NULL)
+	if (format == NULL || (*format == '%' && *format++ == '\0'))
 		return (-1);
 	va_start(forms, format);
-
 	while (*format != '\0')
 	{
 		if (*format != '%')
@@ -26,22 +26,17 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == '\0')
-				break;
 			if (*format == 'c')
 			{
-				char c = va_arg(forms, int);
+				c = va_arg(forms, int);
 				write(1, &c, 1);
-				count ++;
+				count++;
 			}
 			else if (*format == 's')
 			{
-				char *str = va_arg(forms, char *);
-				int _strlen = 0;
-				while (str[_strlen] != '\0')
-					_strlen++;
-				write(1, str, _strlen);
-				count += _strlen;
+				str = va_arg(forms, char *);
+				write(1, str, strlen(str));
+				count += strlen(str);
 			}
 			else if (*format == '%')
 			{
