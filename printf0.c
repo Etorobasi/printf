@@ -10,41 +10,34 @@
 int _printf(const char *format, ...)
 {
 	va_list forms;
-	int count = 0;
-	char c, *str;
+	int count = 0, str_count, i;
 
-	if (format == NULL || (*format == '%' && *(format++) == '\0'))
+	if (!format || (*format == '%' && *(format++) == '\0'))
 		return (-1);
 	va_start(forms, format);
-	while (*format != '\0')
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (*format != '%')
+		if (format[i] != '%')
 		{
-			write(1, format, 1);
+			put_char(format[i]);
 			count++;
 		}
-		else
+		else if (format[i + 1] == 'c')
 		{
-			format++;
-			if (*format == 'c')
-			{
-				c = va_arg(forms, int);
-				write(1, &c, 1);
-				count++;
-			}
-			else if (*format == 's')
-			{
-				str = va_arg(forms, char *);
-				write(1, str, strlen(str));
-				count += (strlen(str) - 1);
-			}
-			else if (*format == '%')
-			{
-				write(1, format, 1);
-				count++;
-			}
+			put_char(va_arg(forms, int));
+			i++;
 		}
-		format++;
+		else if (format[i + 1] == 's')
+		{
+			str_count = putts(va_arg(forms, char *));
+			i++;
+			count += (str_count - 1);
+		}
+		else if (format[i + 1] == '%')
+		{
+			put_char('%');
+		}
+		count += 1;
 	}
 	va_end(forms);
 	return (count);
