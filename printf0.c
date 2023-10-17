@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 {
 
 	unsigned int len = 0, count = 0;
+	char c, *str;
 	va_list forms;
 
 	va_start(forms, format);
@@ -20,8 +21,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			write(1, format, 1);
-			count++;
+			count += write(1, format, 1);
 		}
 		else
 		{
@@ -30,18 +30,18 @@ int _printf(const char *format, ...)
 				break;
 			else if (*format == '%')
 			{
-				write(1, format, 1);
-				count++;
+				count += write(1, format, 1);
 			}
 			else if (*format == 'c')
 			{
-				put_char(va_arg(forms, int));
-				count++;
+				c = va_arg(forms, int);
+				count += write(1, &c, 1);
 			}
 			else if (*format == 's')
 			{
-			len += putts(va_arg(forms, char *));
-			count += (len - 1);
+			str = va_arg(forms, char *);
+			len = strlen(str);
+			count += write(1, str, len);
 			}
 		}
 		format++;
