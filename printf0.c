@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	va_list forms;
 
 	va_start(forms, format);
-	if (format == NULL)
+	if (!format || format == NULL)
 		return (-1);
 	while (*format)
 	{
