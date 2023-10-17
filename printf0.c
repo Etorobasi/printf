@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			{
 				str = va_arg(forms, char *);
 				write(1, str, strlen(str));
-				count += strlen(str);
+				count += (strlen(str) - 1);
 			}
 			else if (*format == '%')
 			{
