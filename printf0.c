@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			if (*format == '\0')
-				break;
+				return (-1);
 			else if (*format == '%')
 			{
 				count += write(1, format, 1);
