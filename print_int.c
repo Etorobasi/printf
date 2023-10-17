@@ -15,7 +15,7 @@ int printf_int(va_list args)
 
 	if (last < 0)
 	{
-		_putchar('-');
+		put_char('-');
 		num = -num;
 		n = -n;
 		last = -last;
@@ -32,13 +32,13 @@ int printf_int(va_list args)
 		while (exp > 0)
 		{
 			digit = num / exp;
-			_putchar(digit + '0');
+			put_char(digit + '0');
 			num = num - (digit * exp);
 			exp = exp / 10;
 			i++;
 		}
 	}
-	_putchar(last + '0');
+	put_char(last + '0');
 	return (i);
 }
 #include "main.h"
@@ -58,7 +58,7 @@ int printf_dec(va_list args)
 
 	if (last < 0)
 	{
-		_putchar('-');
+		put_char('-');
 		num = -num;
 		n = -n;
 		last = -last;
@@ -75,12 +75,12 @@ int printf_dec(va_list args)
 		while (exp > 0)
 		{
 			digit = num / exp;
-			_putchar(digit + '0');
+			put_char(digit + '0');
 			num = num - (digit * exp);
 			exp = exp / 10;
 			i++;
 		}
 	}
-	_putcvhar(last + '0');
+	put_char(last + '0');
 	return (i);
 }
