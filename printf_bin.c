@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 /**
  * printf_bin - prints a binary number.
  * @val: arguments.
