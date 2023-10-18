@@ -29,6 +29,8 @@ int print_format(char specifier, va_list forms)
 		count += printf_HEX(forms);
 	else if (specifier == 'o')
 		count += printf_oct(forms);
+	else if (specifier == 'b')
+		count += printf_bin(forms);
 	else
 	{
 		put_char('%');
