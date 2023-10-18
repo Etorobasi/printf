@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 /**
  * printf_hex - prints an hexadecimal nums
  * @val: arguments.
