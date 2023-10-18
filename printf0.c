@@ -19,6 +19,8 @@ int print_format(char specifier, va_list forms)
 	else if (specifier == 's')
 	{
 		str = va_arg(forms, char *);
+		if (str == NULL)
+			str = "(null)";
 		len = strlen(str);
 		count += write(1, str, len);
 	}
