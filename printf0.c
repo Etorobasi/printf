@@ -1,6 +1,38 @@
 #include "main.h"
 
 /**
+ * print_format - formats string
+ * @specifier: identifier to be converted
+ * @forms: pointer to argument specifiers
+ *
+ * Return: number of characters printed
+ */
+int print_format(char specifier, va_list forms)
+{
+	int len = 0, count = 0;
+	char *str;
+
+	if (specifier == '%')
+		count += put_char('%');
+	else if (specifier == 'c')
+		count += put_char(va_arg(forms, int));
+	else if (specifier == 's')
+	{
+		str = va_arg(forms, char *);
+		if (str == NULL)
+			str = "(null)";
+		len = strlen(str);
+		count += write(1, str, len);
+	}
+	else
+	{
+		put_char('%');
+		write(1, &specifier, 1);
+		count += 2;
+	}
+	return (count);
+}
+/**
  * _printf - produces output according to a format
  * @format: given character string
  *
@@ -10,14 +42,13 @@
 int _printf(const char *format, ...)
 {
 
-	unsigned int len = 0, count = 0;
-	char c, *str;
+	unsigned int count = 0;
 	va_list forms;
 
 	va_start(forms, format);
 	if (format == NULL)
 		return (-1);
-	while (*format && *format != '\0')
+	while (*format != '\0')
 	{
 		if (*format != '%')
 		{
@@ -27,22 +58,11 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			if (*format == '\0')
+			{
 				return (-1);
-			else if (*format == '%')
-			{
-				count += write(1, format, 1);
 			}
-			else if (*format == 'c')
-			{
-				c = va_arg(forms, int);
-				count += write(1, &c, 1);
-			}
-			else if (*format == 's')
-			{
-			str = va_arg(forms, char *);
-			len = strlen(str);
-			count += write(1, str, len);
-			}
+			else
+				count += print_format(*format, forms);
 		}
 		format++;
 	}
