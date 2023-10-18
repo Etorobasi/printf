@@ -21,10 +21,11 @@ typedef struct format
 
 int putts(char *c);
 int put_char(char c);
+int printf_str(char *str);
 int _printf(const char *format, ...);
 int printf_int(va_list args);
 int printf_dec(va_list args);
-int printf_unsigned(va_list args);
+int printf_u(va_list args);
 int printf_oct(va_list val);
 int printf_HEX(va_list val);
 int printf_hex(va_list val);

@@ -9,21 +9,26 @@
  */
 int print_format(char specifier, va_list forms)
 {
-	int len = 0, count = 0;
-	char *str;
+	int count = 0;
 
 	if (specifier == '%')
 		count += put_char('%');
 	else if (specifier == 'c')
 		count += put_char(va_arg(forms, int));
 	else if (specifier == 's')
-	{
-		str = va_arg(forms, char *);
-		if (str == NULL)
-			str = "(null)";
-		len = strlen(str);
-		count += write(1, str, len);
-	}
+		count += printf_str(va_arg(forms, char *));
+	else if (specifier == 'd')
+		count += printf_dec(forms);
+	else if (specifier == 'i')
+		count += printf_int(forms);
+	else if (specifier == 'u')
+		count += printf_u(forms);
+	else if (specifier == 'x')
+		count += printf_hex(forms);
+	else if (specifier == 'X')
+		count += printf_HEX(forms);
+	else if (specifier == 'o')
+		count += printf_oct(forms);
 	else
 	{
 		put_char('%');
