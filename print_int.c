@@ -43,6 +43,7 @@ int printf_int(va_list args)
 	return (i);
 }
 #include "main.h"
+#include <stdlib.h>
 /**
  * printf_dec - prints decimal number in the printf function created
  * @args: argument to print
