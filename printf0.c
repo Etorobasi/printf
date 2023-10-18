@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	va_list forms;
 
 	va_start(forms, format);
-	if (format == NULL || *(format++) == '\0')
+	if (format == NULL || *format == '\0')
 		return (-1);
 	while (*format && *format != '\0')
 	{
@@ -26,7 +26,9 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == '%')
+			if (*format == '\0')
+				return (-1);
+			else if (*format == '%')
 			{
 				count += write(1, format, 1);
 			}
