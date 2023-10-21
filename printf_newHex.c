@@ -18,7 +18,7 @@ int printf_newHex(unsigned long int num)
 		counter++;
 	}
 	counter++;
-	array = malloc(counter * sizeof(int));
+	array = malloc(counter * sizeof(long int));
 
 	for (i = 0; i < counter; i++)
 	{
