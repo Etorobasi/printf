@@ -1,8 +1,8 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * printf_HEX - prints an hexadecimal nums
- * @val: arguments.
+ * printf_newHEX - prints an hexadecimal nums
+ * @num: arguments.
  * Return: counter
  */
 int printf_newHEX(unsigned int num)

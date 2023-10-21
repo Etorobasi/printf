@@ -7,9 +7,9 @@
  */
 int printf_newHex(unsigned long int num)
 {
-	int i;
-	int *array;
-	int counter = 0;
+	long int i;
+	long int *array;
+	long int counter = 0;
 	unsigned long int temp = num;
 
 	while (num / 16 != 0)
@@ -18,7 +18,7 @@ int printf_newHex(unsigned long int num)
 		counter++;
 	}
 	counter++;
-	array = malloc(counter * sizeof(unsigned long int));
+	array = malloc(counter * sizeof(long int));
 
 	for (i = 0; i < counter; i++)
 	{
