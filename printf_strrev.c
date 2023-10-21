@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * printf_strrev - func that prints a string in reverse
- * Aargs: type struc va_arg
+ * args: type struc va_arg
  * Return: the string
  */
 int printf_strrev(va_list args)
