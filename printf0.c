@@ -33,6 +33,8 @@ int print_format(char specifier, va_list forms)
 		count += printf_bin(forms);
 	else if (specifier == 'S')
 		count += printf_S(forms);
+	else if (specifier == 'p')
+		count += printf_pointer(forms);
 	else
 	{
 		put_char('%');
