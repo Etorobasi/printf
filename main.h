@@ -6,6 +6,13 @@
 #include <string.h>
 #include <stdlib.h>
 
+/* Flag Modifier Macros */
+#define PLUS '+'
+#define SPACE ' '
+#define HASH '#'
+#define ZERO '0'
+#define NEG '-'
+
 /**
  ** struct format - match the conversion specifiers for printf
  ** @id: type char pointer of the specifier i.e (l, h) for (d, i, u, o, x, X)
