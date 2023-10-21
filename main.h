@@ -36,4 +36,6 @@ int printf_pointer(va_list args);
 int printf_newHex(unsigned long int num);
 int printf_rot(va_list args);
 int printf_strrev(va_list args);
+int _strlenx(const char *s);
+int str_len(char *s);
 #endif
