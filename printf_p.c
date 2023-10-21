@@ -20,8 +20,8 @@ int printf_pointer(va_list args)
 		for (i = 0; s[i] != '\0'; i++)
 		{
 			put_char(s[i]);
+			return (i);
 		}
-		return (i);
 	}
 	x = (unsigned long int)p;
 	put_char('0');
