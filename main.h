@@ -19,6 +19,17 @@ typedef struct format
 	int (*f)();
 } convert_match;
 
+/**
+ ** struct flag_s - A new type defining a flags struct.
+ ** @flag: A character representing a flag.
+ ** @value: The integer value of the flag.
+ **/
+typedef struct flag_s
+{
+	unsigned char flag;
+	unsigned char value;
+} flag_t;
+
 int putts(char *c);
 int put_char(char c);
 int printf_str(char *str);
@@ -38,4 +49,5 @@ int printf_rot(va_list args);
 int printf_strrev(va_list args);
 int _strlenx(const char *s);
 int str_len(char *s);
+unsigned char handle_flags(const char *flags, char *index);
 #endif
