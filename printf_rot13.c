@@ -17,19 +17,20 @@ int printf_rot(va_list args)
 		s = "(null)";
 	for (i = 0; s[i]; i++)
 	{
-		for (j = 0; norm[j] && !k; j++)
+		for (j = 0; norm[j]; j++)
 		{
 			if (s[i] == norm[j])
 			{
 				put_char(rot[j]);
 				counter++;
-				k = 1;
 			}
 		}
-		if (!k)
-		{
-			put_char(s[i]);
-			counter++;
+			else
+			{
+				put_char('%');
+				put_char('R');
+				counter += 2;
+			}
 		}
 	}
 	return (counter);
