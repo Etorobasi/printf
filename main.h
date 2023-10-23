@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <limits.h>
+#include <stdio.h>
 
 /* Flag Modifier Macros */
 #define PLUS 1
@@ -42,9 +44,10 @@ typedef struct flag_s
 	unsigned char value;
 } flag_t;
 
-int putts(char *c);
+int printf_percent(void);
+int printf_char(va_list val);
 int put_char(char c);
-int printf_str(char *str);
+int printf_str(va_list args);
 int _printf(const char *format, ...);
 int printf_int(va_list args);
 int printf_dec(va_list args);

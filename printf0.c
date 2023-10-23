@@ -6,7 +6,6 @@
  * @forms: pointer to argument specifiers
  *
  * Return: number of characters printed
- */
 int print_format(char specifier, va_list forms)
 {
 	int count = 0;
@@ -45,6 +44,7 @@ int print_format(char specifier, va_list forms)
 	}
 	return (count);
 }
+*/
 /**
  * _printf - produces output according to a format
  * @format: given character string
@@ -54,30 +54,39 @@ int print_format(char specifier, va_list forms)
  */
 int _printf(const char *format, ...)
 {
+	convert_match p[] = {
+		{"%s", printf_str}, {"%S", printf_S},
+		{"%i", printf_int}, {"%d", printf_dec},
+		{"%x", printf_hex}, {"%X", printf_HEX},
+		{"%u", printf_u}, {"%b", printf_bin},
+		{"%c", printf_char}, {"%%", printf_percent},
+		{"%r", printf_strrev}, {"%R", printf_rot},
+		{"%p", printf_pointer}, {"%o", printf_oct}
+	};
 
-	unsigned int count = 0;
+	int i = 0, j, count = 0;
 	va_list forms;
 
 	va_start(forms, format);
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	while (*format != '\0')
+Here:
+	while (format[i] != '\0')
 	{
-		if (*format != '%')
+		j = 13;
+		while (j >= 0)
 		{
-			count += write(1, format, 1);
-		}
-		else
-		{
-			format++;
-			if (*format == '\0')
+			if (p[j].id[0] == format[i] && p[j].id[1] == format[i + 1])
 			{
-				return (-1);
+				count += p[j].f(forms);
+				i += 2;
+				goto Here;
 			}
-			else
-				count += print_format(*format, forms);
+			j--;
 		}
-		format++;
+		put_char(format[i]);
+		count++;
+		i++;
 	}
 	va_end(forms);
 	return (count);

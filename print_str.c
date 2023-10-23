@@ -6,13 +6,17 @@
  *
  * Return: number of bytes printed to stdout
  */
-int printf_str(char *str)
+int printf_str(va_list args)
 {
-	int count = 0, len = 0;
+	char *str = va_arg(args, char *);
+	int count = 0, len = 0, i;
 
 	if (str == NULL)
 		str = "(null)";
 	len = strlen(str);
-	count += write(1, str, len);
+	for (i = 0; i < len; i++)
+	{
+		count += put_char(str[i]);
+	}
 	return (count);
 }
