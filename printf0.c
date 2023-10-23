@@ -1,51 +1,6 @@
 #include "main.h"
 
 /**
- * print_format - formats string
- * @specifier: identifier to be converted
- * @forms: pointer to argument specifiers
- *
- * Return: number of characters printed
-int print_format(char specifier, va_list forms)
-{
-	int count = 0;
-
-	if (specifier == '%')
-		count += put_char('%');
-	else if (specifier == 'c')
-		count += put_char(va_arg(forms, int));
-	else if (specifier == 's')
-		count += printf_str(va_arg(forms, char *));
-	else if (specifier == 'd')
-		count += printf_dec(forms);
-	else if (specifier == 'i')
-		count += printf_int(forms);
-	else if (specifier == 'u')
-		count += printf_u(forms);
-	else if (specifier == 'x')
-		count += printf_hex(forms);
-	else if (specifier == 'X')
-		count += printf_HEX(forms);
-	else if (specifier == 'o')
-		count += printf_oct(forms);
-	else if (specifier == 'b')
-		count += printf_bin(forms);
-	else if (specifier == 'S')
-		count += printf_S(forms);
-	else if (specifier == 'p')
-		count += printf_pointer(forms);
-	else if (specifier == 'R')
-		count += printf_rot(forms);
-	else
-	{
-		put_char('%');
-		write(1, &specifier, 1);
-		count += 2;
-	}
-	return (count);
-}
-*/
-/**
  * _printf - produces output according to a format
  * @format: given character string
  *

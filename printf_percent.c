@@ -2,7 +2,7 @@
 
 /**
  * printf_percent - formats the conversion specifier '%'
- * 
+ *
  * Return: 1
  */
 int printf_percent(void)

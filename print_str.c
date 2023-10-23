@@ -2,7 +2,7 @@
 
 /**
  * printf_str - prints a string
- * @str: string to be printed
+ * @args: argument string to be printed
  *
  * Return: number of bytes printed to stdout
  */

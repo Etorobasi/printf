@@ -27,7 +27,7 @@ int printf_rot(va_list args)
 				k = 1;
 			}
 		}
-	       	if (!k)
+		if (!k)
 		{
 			put_char(s[i]);
 			counter++;
